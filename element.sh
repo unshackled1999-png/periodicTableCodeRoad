@@ -25,7 +25,7 @@ then
 else
   ATOMIC_INFORMATION=$($PSQL "SELECT e.atomic_number, e.name, e.symbol, p.atomic_mass, p.melting_point_celsius, p.boiling_point_celsius, t.type from elements as e inner join properties as p ON e.atomic_number = p.atomic_number inner join types as t on p.type_id = t.type_id where e.atomic_number = $ATOMIC_NUMBER;")
 fi
-echo "$ELEMENT_DATA" | while IFS="|" read -r ATOM_NUM NAME SYMBOL MASS MELT BOIL TYPE
+echo "$ATOMIC_INFORMATION" | while IFS="|" read -r ATOM_NUM NAME SYMBOL MASS MELT BOIL TYPE
   do
     echo "The element with atomic number $ATOM_NUM is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELT celsius and a boiling point of $BOIL celsius."
   done
