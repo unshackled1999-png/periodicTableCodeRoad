@@ -18,7 +18,7 @@ else
 fi
 
 #check if valid input
-if [[ -z $1 ]] 
+if [[ -z $ATOMIC_NUMBER ]] 
 then
   echo I could not find that element in the database.
   exit
